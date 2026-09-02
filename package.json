@@ -1,0 +1,25 @@
+{
+  "name": "intro_to_mongoose_lab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "practiceDatabaseMethods.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aalebreeq1/intro_to_mongoose_lab.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/aalebreeq1/intro_to_mongoose_lab/issues"
+  },
+  "homepage": "https://github.com/aalebreeq1/intro_to_mongoose_lab#readme",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "mongoose": "^9.9.4"
+  }
+}
