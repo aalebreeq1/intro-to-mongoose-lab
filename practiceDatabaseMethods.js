@@ -1,23 +1,9 @@
-const mongoose = require('mongoose')
-const Recipe = require('./models/Recipe')
-const dns = require('dns')
-dns.setServers(['8.8.8.8', '1.1.1.1'])
-const dotenv = require('dotenv').config()
+
+const { createRecipe, getAllRecipies, getRecipeById, updateRecipe, deleteRecipe } = require('./recipeUtils')
+const connectToDB = require('./db')
 
 
-async function connectToDB() { //connection to the database
-    try {
-        await mongoose.connect(process.env.CONNECTION_URI) // <----- PUT YOUR DATABASE CONNECTION STRING HERE
-        console.log("Connected to Database")
-    }
-    catch (error) {
-        console.log("Error Occured", error)
-    }
-}
-
-
-connectToDB() // connect to database
-
+connectToDB()
 const newRecipe = {
     name: "Um Ali",
     instructions: "bake at 180C",
@@ -25,50 +11,19 @@ const newRecipe = {
     difficulty: "Medium"
 }
 
-
-
-async function createRecipe(newRecipe) {
-    try {
-        const createRecipe = await Recipe.create(newRecipe)
-        console.log(createRecipe)
-    }
-    catch (err) {
-        console.log(err)
-    }
-
+const newRecipeData = {
+    name: "Wing",
+    instructions: "fryed at 180C",
+    prepTime: 120,
+    difficulty: "Medium"
 }
 
-// createRecipe(newRecipe)
 
-async function getAllRecipies() {
-    try {
-        const recipies = await Recipe.find()
+createRecipe(newRecipe)
+getAllRecipies()
+getRecipeById('1')
+updateRecipe('6a985569cf3e2870986d7167', newRecipeData)
 
-        for (let recipie of recipies) {
-            console.log(
-                `${recipie.name} is an ${recipie.difficulty} recipe and takes ${recipie.prepTime} minutes to prepare`
-            )
-        }
-    }
-    catch (err) {
-        console.log(err)
-    }
-}
-
-// getAllRecipies()
-
-
-async function getRecipeById(id) {
-    try {
-        const recipie = await Recipe.findById(id)
-        console.log(recipie)
-    }
-    catch(err){
-        console.log("No recipe with this ID exists.")
-    }
-}
-
-// getRecipeById(1))
 
 
 
