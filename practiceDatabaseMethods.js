@@ -23,8 +23,7 @@ createRecipe(newRecipe)
 getAllRecipies()
 getRecipeById('1')
 updateRecipe('6a985569cf3e2870986d7167', newRecipeData)
-
-
+deleteRecipe("1")
 
 
 
